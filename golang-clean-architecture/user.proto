@@ -1,0 +1,24 @@
+syntax = "proto3";
+
+option go_package = "target/grpc/user";
+package grpc;
+
+service UserService {
+    rpc ListUsers(ListUsersRequest) returns (ListUsersResponse) {}
+}
+
+//*
+
+message ListUsersRequest {
+    string query = 1;
+}
+
+message ListUsersResponse {
+    repeated User users = 1;
+}
+
+message User {
+    string id = 1;
+    string username = 2;
+    string password = 3;
+}
